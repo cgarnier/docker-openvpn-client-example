@@ -1,0 +1,15 @@
+version: "3"
+services:
+  vpn:
+    build: .
+    cap_add:
+      - NET_ADMIN
+    volumes:
+      - ./config/gero.ovpn:/config/default.ovpn
+    devices:
+      - /dev/net/tun:/dev/net/tun
+  nginx:
+    depends_on:
+      - vpn
+    image: nginx
+    network_mode: service:vpn
