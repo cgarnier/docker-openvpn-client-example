@@ -1,0 +1,11 @@
+version: 2
+updates:
+  - package-ecosystem: "docker"
+    directory: "/"          # répertoire où se trouve votre Dockerfile
+    schedule:
+      interval: "daily"     # ou weekly
+    commit-message:
+      prefix: "deps(docker)"
+    labels:
+      - "dependencies"
+      - "docker"
